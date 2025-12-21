@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setSearchTerm as search, fetchSearchResults } from "./searchRedditSlice";
+import { addToHistory } from "../searchHistory/searchHistorySlice";
 
 function SearchReddit() {
     const [searchTerm, setSearchTerm] = useState("");
@@ -22,7 +23,7 @@ function SearchReddit() {
           </div>
           <input
             type="text"
-            className="mx-2"
+            className="mx-auto p-2 w-48 sm:w-64 md:w-96 lg:w-lg outline-none rounded-lg"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             onKeyDown={(e) => {
@@ -32,6 +33,7 @@ function SearchReddit() {
                 dispatch(fetchSearchResults(searchTerm)).then(res=>{
                   console.log("Search Results Dispatched:", res); // remove this line in production
                 });
+                dispatch(addToHistory(searchTerm));
                 setSearchTerm("");
                 }
               }}
