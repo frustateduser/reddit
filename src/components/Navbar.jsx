@@ -1,4 +1,4 @@
-import SearchReddit from "../features/searchReddit/searchReddit";
+import SearchReddit from "../features/searchReddit/SearchReddit";
 import SearchHistory from "../features/searchHistory/SearchHistory";
 
 const Navbar = () => {
